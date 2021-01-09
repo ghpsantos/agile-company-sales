@@ -22,7 +22,7 @@ class Sale(db.Model):
         user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
-class UserSchema(ma.SQLAlchemySchema):
+class UserAmountSchema(ma.SQLAlchemySchema):
         class Meta:
                 model = User
 
