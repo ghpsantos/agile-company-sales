@@ -1,8 +1,9 @@
 from flask import Response, json
 from flask_restful import Resource
-from database.models import User, UserAmountSchema
+from database.models import User, UserAmountSchema, UserSchema
 
 users_schema = UserAmountSchema(many=True)
+user_schema = UserSchema()
 
 class UserApi(Resource):
 
@@ -37,3 +38,9 @@ class UserRevenueApi(Resource):
 
         return Response(json.dumps(json_data), mimetype='application/json', status=200)
 
+
+class UserSalesApi(Resource):
+    def get(self, id):
+        user = User.query.filter_by(id=id).first()
+
+        return Response(user_schema.dumps(user), mimetype='application/json', status=200)

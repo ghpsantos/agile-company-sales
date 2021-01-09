@@ -1,6 +1,5 @@
 from .database import db
 from .database import ma
-from sqlalchemy_utils import PhoneNumber
 from sqlalchemy import CheckConstraint
 import datetime
 from marshmallow import fields
@@ -21,11 +20,25 @@ class Sale(db.Model):
         date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow())
         user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
+class SaleSchema(ma.SQLAlchemyAutoSchema):
+        class Meta:
+                model = Sale
+                exclude = ['id']
+
+
+class UserSchema(ma.SQLAlchemyAutoSchema):
+        class Meta:
+                model = User
+                exclude = ['id']
+
+        sales = fields.Nested(SaleSchema, many=True)
+
 
 class UserAmountSchema(ma.SQLAlchemySchema):
         class Meta:
                 model = User
 
+        id = ma.auto_field()
         username = ma.auto_field()
         total_amount = fields.Method('sales_amount')
 
@@ -36,6 +49,4 @@ class UserAmountSchema(ma.SQLAlchemySchema):
 
                 return total_amount
 
-class SaleSchema(ma.SQLAlchemyAutoSchema):
-        class Meta:
-                model = Sale
+
