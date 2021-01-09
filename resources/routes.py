@@ -1,4 +1,4 @@
-
+from resources.user import UserApi
 
 def initialize_routes(api):
-    return
+    api.add_resource(UserApi, '/api/users')
