@@ -42,5 +42,4 @@ class UserRevenueApi(Resource):
 class UserSalesApi(Resource):
     def get(self, id):
         user = User.query.filter_by(id=id).first()
-
         return Response(user_schema.dumps(user), mimetype='application/json', status=200)

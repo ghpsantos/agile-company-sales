@@ -32,7 +32,14 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
                 exclude = ['id']
 
         sales = fields.Nested(SaleSchema, many=True)
+        total_amount = fields.Method('sales_amount')
 
+        def sales_amount(self, user):
+                total_amount = 0
+                for sale in user.sales:
+                        total_amount += sale.quantity
+
+                return total_amount
 
 class UserAmountSchema(ma.SQLAlchemySchema):
         class Meta:
