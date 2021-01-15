@@ -1,9 +1,10 @@
 import unittest
 from app import app, initialize_db
 from database.database import db
-from database.models import UserSchema
+from database.models import UserSchema, User, UserAmountSchema
 import json
-import random
+
+from database.utils import populate_command_with_db
 
 class RoutesTests(unittest.TestCase):
 
@@ -12,6 +13,7 @@ class RoutesTests(unittest.TestCase):
         app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/sales_test_database'
         initialize_db(app)
         app.app_context().push()
+        populate_command_with_db(db)
         self.app = app.test_client()
         self.db = db
 
@@ -19,24 +21,39 @@ class RoutesTests(unittest.TestCase):
         response = self.app.get('/')
         self.assertEqual(200, response.status_code)
 
-    #todo if we had a route to add an user, we could've just make a post to id and then an get to check its response
     def test_get_user_sales(self):
-        #mocked
-        from database.models import User, Sale
+        user = User.query.first()
         user_schema = UserSchema()
-        user = User(name='Michael', username='mvv', number='81 9999-9999')
-        sale = Sale(product='Wardrobe', quantity=random.randint(1, 10),
-                    sale=round(random.uniform(500, 10000), 2))
-
-        user.sales.append(sale)
-        self.db.session.add(user)
-        self.db.session.commit()
-        #mocked
 
         response = self.app.get('/api/users/sales/' + str(user.id))
-
         self.assertCountEqual(json.loads(response.data), user_schema.dump(user))
 
+    def test_get_users_revenue(self):
+        users = User.query.all()
+
+        total_sales = 0
+        total_products = 0
+        total_users = len(users)
+
+        for user in users:
+            for sale in user.sales:
+                total_sales += sale.sale
+                total_products += sale.quantity
+
+        json_data = {'total_sales': round(total_sales, 2), 'total_products': total_products, 'total_users': total_users}
+
+        response = self.app.get('/api/users/revenue')
+
+        self.assertCountEqual(json.loads(response.data), json_data)
+
+    def test_top_five_users(self):
+        users = User.query.all()[:5]
+        users_schema = UserAmountSchema(many=True)
+
+        json_data = users_schema.dump(users)
+        response = self.app.get('/api/users/top')
+
+        self.assertCountEqual(json.loads(response.data), json_data)
 
     def tearDown(self):
         self.db.session.remove()

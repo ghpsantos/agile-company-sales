@@ -1,11 +1,16 @@
 from app import app
 
 @app.cli.command('populatedb')
-def populate_command():
+def populate():
     from database.database import db
-    from database.models import User, Sale
     with app.app_context():
         db.create_all()
+
+    populate_command_with_db(db)
+
+
+def populate_command_with_db(db):
+    from database.models import User, Sale
 
     users = [('Joao', 'josk'), ('Maria', 'mpp'), ('Isabelly', 'isp'), ('Victor', 'vsp'), ('Lais', 'lssv'), ('Pedro', 'psse'), ('Ricardo', 'rlsc'), ('Luiz', 'llv')]
     sales = ['Car', 'PC', 'Laptop', 'Wardrobe', 'House']
@@ -22,3 +27,4 @@ def populate_command():
             db.session.add(sale)
 
         db.session.commit()
+
