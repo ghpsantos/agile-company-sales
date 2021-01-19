@@ -3,7 +3,7 @@ version: "3.7"
 services:
   api:
     image: flask-api:latest
-    build: "."
+    build: "./api"
     container_name: "flask-api"
     restart: always
     working_dir: /agile-sales
@@ -29,6 +29,19 @@ services:
       - 5432:5432
     expose:
       - "5432"
+
+  front-end:
+    build: "./front-end"
+    image: sales-front:latest
+    container_name: "sales-front"
+    command: npm start
+    ports:
+    - 3000:3000
+    expose:
+      - "3000"
+    depends_on:
+      - api
+    stdin_open: true
 
 volumes:
   sales-postgres-data:
