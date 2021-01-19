@@ -3,11 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 
 import { Page } from 'components';
 import {
-  Header,
-  Statistics,
-  Notifications,
-  Projects,
-  Todos
+  Statistics
 } from './components';
 
 import Results from '../SocialFeed/components/Results';

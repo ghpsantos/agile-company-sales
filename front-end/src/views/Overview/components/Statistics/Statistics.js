@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
-import { Card, Typography, Grid, colors } from '@material-ui/core';
+import { Card, Typography, Grid } from '@material-ui/core';
 
 import axios from 'utils/axios';
-import { Label } from 'components';
 
 const useStyles = makeStyles(theme => ({
   root: {},

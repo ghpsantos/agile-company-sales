@@ -1,39 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import {
-  Button,
-  Card,
+
   CardContent,
-  colors,
-  Grid,
   Table,
   TableBody,
   TableCell,
   TableHead,
-  TableRow, Typography
+  TableRow
 } from '@material-ui/core';
 
-import axios from 'utils/axios';
-import { CustomerInfo, Invoices, SendEmails, OtherActions } from './components';
-import { Label } from '../../../../components';
+
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import { Link as RouterLink } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
   root: {}
 }));
 
 const Summary = props => {
-  const { className, user, ...rest } = props;
+  const {user} = props;
 
   const classes = useStyles();
 
   return (
     <CardContent className={classes.content}>
       <PerfectScrollbar>
-        {/*<div className={classes.inner}>*/}
         <Table>
           <TableHead>
             <TableRow>
@@ -55,7 +47,6 @@ const Summary = props => {
             ))}
           </TableBody>
         </Table>
-        {/*</div>*/}
       </PerfectScrollbar>
     </CardContent>
   );

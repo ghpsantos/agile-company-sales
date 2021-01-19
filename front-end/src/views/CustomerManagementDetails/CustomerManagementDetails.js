@@ -1,11 +1,10 @@
 import React, { useEffect, useState} from 'react';
-import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import { Tabs, Tab, Divider, colors } from '@material-ui/core';
+import { colors } from '@material-ui/core';
 
 import { Page } from 'components';
-import { Header, Summary, Invoices, Logs } from './components';
+import { Header, Summary } from './components';
 import axios from '../../utils/axios';
 
 const useStyles = makeStyles(theme => ({
@@ -24,9 +23,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const CustomerManagementDetails = props => {
-  const { match, history } = props;
+  const { match } = props;
   const classes = useStyles();
-  const { id, tab } = match.params;
+  const { id } = match.params;
   const [user, setUser] = useState(false);
 
   useEffect(() => {
@@ -42,7 +41,7 @@ const CustomerManagementDetails = props => {
 
     fetchCustomer();
 
-  }, []);
+  }, [id]);
 
 
   return (

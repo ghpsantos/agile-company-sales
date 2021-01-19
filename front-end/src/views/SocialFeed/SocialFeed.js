@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 
 import axios from 'utils/axios';
-import { Page, PostCard, AddPost } from 'components';
+import { Page } from 'components';
 import Results from './components/Results';
 
 const useStyles = makeStyles(theme => ({

@@ -5,15 +5,11 @@ import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { makeStyles } from '@material-ui/styles';
 import {
-  Avatar,
   Card,
   CardActions,
   CardContent,
-  CardHeader,
-  Checkbox,
   Divider,
   Button,
-  Link,
   Table,
   TableBody,
   TableCell,
@@ -23,8 +19,7 @@ import {
   Typography
 } from '@material-ui/core';
 
-import getInitials from 'utils/getInitials';
-import { ReviewStars, GenericMoreButton, TableEditBar } from 'components';
+import { TableEditBar } from 'components';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -49,41 +44,10 @@ const Results = props => {
 
   const classes = useStyles();
 
-  const [selectedCustomers, setSelectedCustomers] = useState([]);
+  const [selectedCustomers] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
-  const handleSelectAll = event => {
-    const selectedCustomers = event.target.checked
-      ? customers.map(customer => customer.id)
-      : [];
-
-    setSelectedCustomers(selectedCustomers);
-  };
-
-  const handleSelectOne = (event, id) => {
-    const selectedIndex = selectedCustomers.indexOf(id);
-    let newSelectedCustomers = [];
-
-    if (selectedIndex === -1) {
-      newSelectedCustomers = newSelectedCustomers.concat(selectedCustomers, id);
-    } else if (selectedIndex === 0) {
-      newSelectedCustomers = newSelectedCustomers.concat(
-        selectedCustomers.slice(1)
-      );
-    } else if (selectedIndex === selectedCustomers.length - 1) {
-      newSelectedCustomers = newSelectedCustomers.concat(
-        selectedCustomers.slice(0, -1)
-      );
-    } else if (selectedIndex > 0) {
-      newSelectedCustomers = newSelectedCustomers.concat(
-        selectedCustomers.slice(0, selectedIndex),
-        selectedCustomers.slice(selectedIndex + 1)
-      );
-    }
-
-    setSelectedCustomers(newSelectedCustomers);
-  };
 
   const handleChangePage = (event, page) => {
     setPage(page);
