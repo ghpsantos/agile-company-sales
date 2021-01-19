@@ -9,15 +9,10 @@ app = Flask(__name__)
 CORS(app)
 api = Api(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/sales_database'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@db-sales:5432/sales_database'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/sales_database'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@db-sales:5432/sales_database'
 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # silence the deprecation warning
-
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
-
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 initialize_db(app)
 initialize_routes(api)

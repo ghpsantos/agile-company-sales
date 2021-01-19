@@ -43,7 +43,7 @@ const Overview = () => {
   useEffect(() => {
     let mounted = true;
 
-    const fetchCustomers = () => {
+    const fetchUsers = () => {
       axios.get('/api/users/top').then(response => {
         if (mounted) {
           setUsers(response.data);
@@ -51,7 +51,7 @@ const Overview = () => {
       });
     };
 
-    fetchCustomers();
+    fetchUsers();
 
     return () => {
       mounted = false;

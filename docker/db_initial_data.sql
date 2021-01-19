@@ -22,6 +22,13 @@ SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
+
+--
+-- Test DATABASE
+--
+
+CREATE DATABASE sales_test_database;
+
 --
 -- TOC entry 203 (class 1259 OID 33161)
 -- Name: sale; Type: TABLE; Schema: public; Owner: postgres
