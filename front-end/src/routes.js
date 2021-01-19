@@ -44,7 +44,7 @@ const routes = [
       {
         path: '/users/:id',
         exact: true,
-        component: lazy(() => import('views/CustomerManagementDetails'))
+        component: lazy(() => import('views/UserSalesDetails/UserSalesDetails'))
       },
       {
         path: '/overview',
@@ -54,7 +54,7 @@ const routes = [
       {
         path: '/users',
         exact: true,
-        component: lazy(() => import('views/SocialFeed'))
+        component: lazy(() => import('views/UsersFeed/UsersFeed'))
       },
       {
         component: () => <Redirect to="/errors/error-404" />

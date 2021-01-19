@@ -40,11 +40,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Results = props => {
-  const { className, customers, ...rest } = props;
+  const { className, users, ...rest } = props;
 
   const classes = useStyles();
 
-  const [selectedCustomers] = useState([]);
+  const [selectedUsers] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -67,8 +67,8 @@ const Results = props => {
         gutterBottom
         variant="body2"
       >
-        {customers.length} Records found. Page {page + 1} of{' '}
-        {Math.ceil(customers.length / rowsPerPage)}
+        {users.length} Records found. Page {page + 1} of{' '}
+        {Math.ceil(users.length / rowsPerPage)}
       </Typography>
       <Card>
         <Divider />
@@ -84,11 +84,11 @@ const Results = props => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {customers.slice(0, rowsPerPage).map(customer => (
+                  {users.slice(0, rowsPerPage).map(customer => (
                     <TableRow
                       hover
                       key={customer.id}
-                      selected={selectedCustomers.indexOf(customer.id) !== -1}
+                      selected={selectedUsers.indexOf(customer.id) !== -1}
                     >
                       <TableCell>
                         <div className={classes.nameCell}>
@@ -119,7 +119,7 @@ const Results = props => {
         <CardActions className={classes.actions}>
           <TablePagination
             component="div"
-            count={customers.length}
+            count={users.length}
             onChangePage={handleChangePage}
             onChangeRowsPerPage={handleChangeRowsPerPage}
             page={page}
@@ -128,18 +128,18 @@ const Results = props => {
           />
         </CardActions>
       </Card>
-      <TableEditBar selected={selectedCustomers} />
+      <TableEditBar selected={selectedUsers} />
     </div>
   );
 };
 
 Results.propTypes = {
   className: PropTypes.string,
-  customers: PropTypes.array.isRequired
+  users: PropTypes.array.isRequired
 };
 
 Results.defaultProps = {
-  customers: []
+  users: []
 };
 
 export default Results;

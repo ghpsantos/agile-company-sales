@@ -6,7 +6,7 @@ import {
   Statistics
 } from './components';
 
-import Results from '../SocialFeed/components/Results';
+import Results from '../UsersFeed/components/Results';
 import axios from '../../utils/axios';
 
 const useStyles = makeStyles(theme => ({
@@ -63,7 +63,7 @@ const Overview = () => {
       className={classes.root}
       title="Home"
     >
-      <Results className={classes.results} customers={users} />
+      <Results className={classes.results} users={users} />
       <Statistics className={classes.statistics} />
     </Page>
   );

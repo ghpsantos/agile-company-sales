@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SocialFeed = () => {
+const UsersFeed = () => {
   const classes = useStyles();
 
   const [users, setUsers] = useState([]);
@@ -51,10 +51,10 @@ const SocialFeed = () => {
       className={classes.root}
       title="Users"
     >
-      <Results className={classes.results} customers={users} />
+      <Results className={classes.results} users={users} />
 
     </Page>
   );
 };
 
-export default SocialFeed;
+export default UsersFeed;

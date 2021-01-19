@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const CustomerManagementDetails = props => {
+const UserSalesDetails = props => {
   const { match } = props;
   const classes = useStyles();
   const { id } = match.params;
@@ -59,9 +59,9 @@ const CustomerManagementDetails = props => {
   );
 };
 
-CustomerManagementDetails.propTypes = {
+UserSalesDetails.propTypes = {
   history: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired
 };
 
-export default CustomerManagementDetails;
+export default UserSalesDetails;
