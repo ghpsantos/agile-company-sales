@@ -45,7 +45,6 @@ const CustomerManagementDetails = props => {
   }, []);
 
 
-
   return (
     <Page
       className={classes.root}

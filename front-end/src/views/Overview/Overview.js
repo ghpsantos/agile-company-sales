@@ -10,7 +10,7 @@ import {
   Todos
 } from './components';
 
-import Results from '../CustomerManagementList/components/Results';
+import Results from '../SocialFeed/components/Results';
 import axios from '../../utils/axios';
 
 const useStyles = makeStyles(theme => ({
@@ -67,12 +67,8 @@ const Overview = () => {
       className={classes.root}
       title="Home"
     >
-      {/*<Header />*/}
       <Results className={classes.results} customers={users} />
       <Statistics className={classes.statistics} />
-      {/*<Notifications className={classes.notifications} />*/}
-      {/*<Projects className={classes.projects} />*/}
-      {/*<Todos className={classes.todos} />*/}
     </Page>
   );
 };

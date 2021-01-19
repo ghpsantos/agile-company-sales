@@ -3,8 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 
 import axios from 'utils/axios';
 import { Page, PostCard, AddPost } from 'components';
-import { Header } from './components';
-import Results from '../CustomerManagementList/components/Results';
+import Results from './components/Results';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -54,17 +53,6 @@ const SocialFeed = () => {
     >
       <Results className={classes.results} customers={users} />
 
-      {/*<Header />*/}
-      {/*<AddPost className={classes.newPost} />*/}
-      {/*<div className={classes.posts}>*/}
-      {/*  {posts.map(post => (*/}
-      {/*    <PostCard*/}
-      {/*      className={classes.post}*/}
-      {/*      key={post.id}*/}
-      {/*      post={post}*/}
-      {/*    />*/}
-      {/*  ))}*/}
-      {/*</div>*/}
     </Page>
   );
 };

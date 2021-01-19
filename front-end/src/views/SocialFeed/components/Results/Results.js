@@ -38,11 +38,6 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center'
   },
-  // avatar: {
-  //   height: 42,
-  //   width: 42,
-  //   marginRight: theme.spacing(1)
-  // },
   actions: {
     padding: theme.spacing(1),
     justifyContent: 'flex-end'
@@ -112,10 +107,6 @@ const Results = props => {
         {Math.ceil(customers.length / rowsPerPage)}
       </Typography>
       <Card>
-        {/*<CardHeader*/}
-        {/*  action={<GenericMoreButton />}*/}
-        {/*  title="All customers"*/}
-        {/*/>*/}
         <Divider />
         <CardContent className={classes.content}>
           <PerfectScrollbar>
@@ -123,23 +114,8 @@ const Results = props => {
               <Table>
                 <TableHead>
                   <TableRow>
-                    {/*<TableCell padding="checkbox">*/}
-                    {/*  <Checkbox*/}
-                    {/*    checked={selectedCustomers.length === customers.length}*/}
-                    {/*    color="primary"*/}
-                    {/*    indeterminate={*/}
-                    {/*      selectedCustomers.length > 0 &&*/}
-                    {/*      selectedCustomers.length < customers.length*/}
-                    {/*    }*/}
-                    {/*    onChange={handleSelectAll}*/}
-                    {/*  />*/}
-                    {/*</TableCell>*/}
                     <TableCell>User Name</TableCell>
-                    {/*<TableCell>Location</TableCell>*/}
-                    {/*<TableCell>Money spent</TableCell>*/}
                     <TableCell >Total Amount</TableCell>
-                    {/*<TableCell>Projects held</TableCell>*/}
-                    {/*<TableCell>Reviews</TableCell>*/}
                     <TableCell align="right">Actions</TableCell>
                   </TableRow>
                 </TableHead>
@@ -150,56 +126,20 @@ const Results = props => {
                       key={customer.id}
                       selected={selectedCustomers.indexOf(customer.id) !== -1}
                     >
-                      {/*<TableCell padding="checkbox">*/}
-                      {/*  <Checkbox*/}
-                      {/*    checked={*/}
-                      {/*      selectedCustomers.indexOf(customer.id) !== -1*/}
-                      {/*    }*/}
-                      {/*    color="primary"*/}
-                      {/*    onChange={event =>*/}
-                      {/*      handleSelectOne(event, customer.id)*/}
-                      {/*    }*/}
-                      {/*    value={selectedCustomers.indexOf(customer.id) !== -1}*/}
-                      {/*  />*/}
-                      {/*</TableCell>*/}
                       <TableCell>
                         <div className={classes.nameCell}>
-                          {/*<Avatar*/}
-                          {/*  className={classes.avatar}*/}
-                          {/*  src={customer.avatar}*/}
-                          {/*>*/}
-                          {/*  {getInitials(customer.name)}*/}
-                          {/*</Avatar>*/}
-                          {/*<div>*/}
-                          {/*  <Link*/}
-                          {/*    color="inherit"*/}
-                          {/*    component={RouterLink}*/}
-                          {/*    to="/management/customers/1"*/}
-                          {/*    variant="h6"*/}
-                          {/*  >*/}
                           {customer.username}
-                          {/*  </Link>*/}
-                          {/*  <div>{customer.email}</div>*/}
-                          {/*</div>*/}
                         </div>
                       </TableCell>
-                      {/*<TableCell>{customer.location}</TableCell>*/}
-                      {/*<TableCell>*/}
-                      {/*  {customer.currency}*/}
-                      {/*  {customer.spent}*/}
-                      {/*</TableCell>*/}
+
                       <TableCell>{customer.total_amount}</TableCell>
-                      {/*<TableCell>{customer.projects}</TableCell>*/}
-                      {/*<TableCell>*/}
-                      {/*  <ReviewStars value={customer.rating} />*/}
-                      {/*</TableCell>*/}
+
                       <TableCell align="right">
                         <Button
                           color="primary"
                           component={RouterLink}
                           size="small"
                           to={'/users/'.concat(customer.id)}
-                          // to="/management/customers/1/summary"
                           variant="outlined"
                         >
                           View
