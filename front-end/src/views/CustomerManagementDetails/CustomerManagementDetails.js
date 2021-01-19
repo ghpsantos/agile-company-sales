@@ -28,13 +28,11 @@ const CustomerManagementDetails = props => {
   const classes = useStyles();
   const { id, tab } = match.params;
   const [user, setUser] = useState(false);
-  // const [sales, setSales] = useState([]);
 
   useEffect(() => {
     let mounted = true;
 
     const fetchCustomer = () => {
-      // axios.get('/api/management/customers/1/summary').then(response => {
       axios.get('/api/users/sales/'.concat(id)).then( response => {
         if (mounted) {
           setUser(response.data);
@@ -44,27 +42,9 @@ const CustomerManagementDetails = props => {
 
     fetchCustomer();
 
-    // return () => {
-    //   mounted = false;
-    // };
   }, []);
 
 
-  // console.log(user)
-
-  // const tabs = [
-  //   { value: 'summary', label: 'Summary' },
-  //   // { value: 'invoices', label: 'Invoices' },
-  //   // { value: 'logs', label: 'Logs' }
-  // ];
-
-  // if (!tab) {
-  //   return <Redirect to={`/management/customers/${id}/summary`} />;
-  // }
-  //
-  // if (!tabs.find(t => t.value === tab)) {
-  //   return <Redirect to="/errors/error-404" />;
-  // }
 
   return (
     <Page
