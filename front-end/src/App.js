@@ -11,15 +11,12 @@ import theme from './theme';
 import { configureStore } from './store';
 import routes from './routes';
 import {
-  ScrollReset,
-  GoogleAnalytics,
-  CookiesNotification
+  ScrollReset
 } from './components';
 import './mixins/chartjs';
 import './mixins/moment';
 import './mixins/validate';
 import './mixins/prismjs';
-// import './mock';
 import './assets/scss/index.scss';
 
 const history = createBrowserHistory();
@@ -32,8 +29,6 @@ const App = () => {
         <MuiPickersUtilsProvider utils={MomentUtils}>
           <Router history={history}>
             <ScrollReset />
-            <GoogleAnalytics />
-            <CookiesNotification />
             {renderRoutes(routes)}
           </Router>
         </MuiPickersUtilsProvider>
