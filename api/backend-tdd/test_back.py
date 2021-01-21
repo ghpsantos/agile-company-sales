@@ -17,10 +17,6 @@ class RoutesTests(unittest.TestCase):
         self.app = app.test_client()
         self.db = db
 
-    def test_root(self):
-        response = self.app.get('/')
-        self.assertEqual(200, response.status_code)
-
     def test_get_user_sales(self):
         user = User.query.first()
         user_schema = UserSchema()
